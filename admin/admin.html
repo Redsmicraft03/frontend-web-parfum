@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Parfum</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <div class="header-actions">
+            <button id="add-product-btn" class="btn btn-primary">Tambah Produk</button>
+            <div class="theme-switcher">
+                <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+                <label for="theme-toggle" class="theme-toggle-label"></label>
+            </div>
+            <button id="logout-btn" class="btn btn-danger">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gambar</th>
+                        <th>Nama Produk</th>
+                        <th>Deskripsi</th>
+                        <th>Harga</th>
+                        <th>Link</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="product-table-body">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="form-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title">Tambah Produk Baru</h2>
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+                <div class="form-group">
+                    <label for="name">Nama Produk</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Deskripsi</label>
+                    <textarea id="description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="price">Harga</label>
+                    <input type="number" id="price" required>
+                </div>
+                <div class="form-group">
+                    <label for="link">Link</label>
+                    <input type="url" id="link" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Gambar Produk</label>
+                    <input type="file" id="image" accept="image/png, image/jpeg, image/webp">
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <h2>Konfirmasi Hapus</h2>
+            <p>Apakah Anda yakin ingin menghapus produk ini?</p>
+            <div class="modal-actions">
+                <button id="confirm-delete-btn" class="btn btn-danger">Ya, Hapus</button>
+                <button id="cancel-delete-btn" class="btn">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

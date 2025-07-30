@@ -1,0 +1,132 @@
+/* --- Variabel Warna --- */
+:root {
+    --bg-color: #f4f4f9;
+    --card-color: #ffffff;
+    --text-color: #333333;
+    --border-color: #e0e0e0;
+    --primary-color: #5c67f2;
+    --primary-hover: #4a54e1;
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
+    --success-color: #2ecc71;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="dark"] {
+    --bg-color: #121212;
+    --card-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #333333;
+}
+
+/* --- Gaya Dasar --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--card-color);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* --- Tombol --- */
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: var(--primary-hover); }
+
+.btn-danger { background-color: var(--danger-color); color: white; }
+.btn-danger:hover { background-color: var(--danger-hover); }
+
+.btn-edit { background-color: var(--success-color); color: white; margin-right: 5px; }
+.btn-edit:hover { background-color: #27ae60; }
+
+/* --- Tabel --- */
+main { padding: 2rem; }
+.table-container { overflow-x: auto; background-color: var(--card-color); border-radius: 8px; box-shadow: 0 2px 4px var(--shadow-color); }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+th { background-color: var(--bg-color); }
+td.actions .btn { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+td img { width: 60px; height: 60px; object-fit: cover; border-radius: 5px; }
+
+/* --- Modal --- */
+.modal {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+    width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center; align-items: center;
+}
+.modal-content {
+    background-color: var(--card-color); margin: auto; padding: 2rem;
+    border-radius: 8px; width: 90%; max-width: 500px; position: relative;
+}
+.close-btn { color: var(--text-color); position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; }
+.form-group input, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; background-color: var(--bg-color); color: var(--text-color); }
+.modal-actions { margin-top: 1rem; text-align: right; }
+.modal-actions .btn { margin-left: 0.5rem; }
+
+/* --- Theme Switcher --- */
+.theme-switcher { display: flex; align-items: center; }
+.theme-toggle-checkbox { opacity: 0; position: absolute; }
+.theme-toggle-label {
+    width: 50px; height: 26px; background-color: #ccc;
+    border-radius: 50px; display: inline-block;
+    position: relative; cursor: pointer;
+    transition: background-color 0.2s;
+}
+.theme-toggle-label::after {
+    content: ''; position: absolute; width: 22px; height: 22px;
+    border-radius: 50%; background-color: white;
+    top: 2px; left: 2px; transition: transform 0.2s;
+}
+.theme-toggle-checkbox:checked + .theme-toggle-label { background-color: var(--primary-color); }
+.theme-toggle-checkbox:checked + .theme-toggle-label::after { transform: translateX(24px); }
+
+/* --- Responsif untuk HP --- */
+@media screen and (max-width: 768px) {
+    header { flex-direction: column; gap: 1rem; }
+    table { display: block; }
+    thead { display: none; }
+    tbody, tr, td { display: block; width: 100%; }
+    tr { margin-bottom: 1rem; border: 1px solid var(--border-color); border-radius: 5px; }
+    td { text-align: right; padding-left: 50%; position: relative; border-bottom: 1px solid var(--border-color); }
+    td:last-child { border-bottom: none; }
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 1rem;
+        font-weight: bold;
+        text-align: left;
+    }
+}

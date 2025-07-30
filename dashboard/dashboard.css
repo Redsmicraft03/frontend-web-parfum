@@ -1,0 +1,211 @@
+/* --- Variabel & Gaya Dasar --- */
+:root {
+    --bg-color: #F8F5F2; /* Krem / Off-white */
+    --text-color: #1a1a1a;
+    --primary-color: #B99C81; /* Aksen warna emas/perunggu pudar */
+    --card-bg-color: #FFFFFF;
+    --font-serif: 'Lora', serif;
+    --font-sans: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+}
+
+section {
+    padding: 4rem 2rem;
+}
+
+/* --- Navigasi --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-color: var(--bg-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* --- Hero Section (Home) --- */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6rem 2rem;
+    background-color: #EAE3DC; /* Warna latar sedikit berbeda */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #555;
+}
+
+/* --- Product Section --- */
+.product-section {
+    text-align: center;
+}
+
+.product-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background-color: var(--card-bg-color);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+
+    object-fit: cover;
+
+    background-color: #ffffff;
+    display: block;
+}
+
+.product-info {
+    padding: 1.5rem;
+}
+
+.product-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-info p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.product-info .btn-link {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.product-info .btn-link:hover {
+    background-color: var(--text-color);
+    color: var(--card-bg-color);
+}
+
+
+/* --- Contact & Footer --- */
+.contact-section {
+    text-align: center;
+    background-color: #EAE3DC;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info {
+    margin-top: 2rem;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+}
+
+.footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #E0D9D1;
+    font-size: 0.9rem;
+}
+
+/* --- Responsif --- */
+@media (max-width: 768px) {
+    .navbar { flex-direction: column; gap: 1rem; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    section { padding: 3rem 1rem; }
+}
