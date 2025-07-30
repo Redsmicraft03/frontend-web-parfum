@@ -1,16 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('register-form');
     const messageDiv = document.getElementById('message-div');
+    const submitButton = registerForm.querySelector('button[type="submit"]'); // BARU: Ambil tombol
     
-    // Sesuaikan URL ini dengan alamat backend Anda
-    const API_URL = 'https://backend-web-parfum.onrender.com/api/register';
+    const API_URL = 'http://localhost:3000/api/register';
+
+    // BARU: Fungsi bantuan untuk mengubah status tombol
+    const setButtonLoadingState = (isLoading) => {
+        if (isLoading) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Membuat akun...';
+        } else {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Register';
+        }
+    };
 
     registerForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        // Sembunyikan pesan sebelumnya
         messageDiv.style.display = 'none';
-        messageDiv.textContent = '';
         messageDiv.className = 'message';
 
         const username = document.getElementById('username').value;
@@ -23,12 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        setButtonLoadingState(true); // DIUBAH: Aktifkan status loading
+
         try {
             const response = await fetch(API_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password }),
             });
 
@@ -38,12 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 messageDiv.textContent = result.message || 'Terjadi kesalahan.';
                 messageDiv.classList.add('error');
             } else {
-                // messageDiv.textContent = result.message;
-
                 messageDiv.textContent = `Registrasi berhasil untuk user: ${result.username}`;
-
                 messageDiv.classList.add('success');
-                registerForm.reset(); // Kosongkan form setelah berhasil
+                registerForm.reset();
             }
             messageDiv.style.display = 'block';
 
@@ -51,6 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDiv.textContent = 'Tidak bisa terhubung ke server.';
             messageDiv.classList.add('error');
             messageDiv.style.display = 'block';
+        } finally {
+            setButtonLoadingState(false); // DIUBAH: Kembalikan tombol ke keadaan semula
         }
     });
 });
