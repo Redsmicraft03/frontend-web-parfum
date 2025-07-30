@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // === Konfigurasi & Inisialisasi ===
-    const API_BASE_URL = 'https://backend-web-parfum.onrender.com/api/admin';
+    const API_BASE_URL = 'https://el-jaziras-perfumery.vercel.app/api/admin';
     const token = localStorage.getItem('token');
     
     if (!token) {

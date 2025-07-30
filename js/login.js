@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessageDiv = document.getElementById('error-message');
     
     // Sesuaikan URL ini dengan alamat backend Anda
-    const API_URL = 'https://backend-web-parfum.onrender.com/api/login';
+    const API_URL = 'https://el-jaziras-perfumery.vercel.app//api/login';
 
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault(); // Mencegah form mengirim secara default
