@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageDiv = document.getElementById('message-div');
     const submitButton = registerForm.querySelector('button[type="submit"]'); // BARU: Ambil tombol
     
-    const API_URL = 'http://localhost:3000/api/register';
+    const API_URL = 'https://backend-web-parfum.onrender.com/api/register';
 
     // BARU: Fungsi bantuan untuk mengubah status tombol
     const setButtonLoadingState = (isLoading) => {
