@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    const API_URL = 'https://el-jaziras-perfumery.vercel.app/api/dashboard';
+    const API_URL = 'https://backend-web-parfum.onrender.com/api/dashboard';
     const productGrid = document.getElementById('product-grid');
 
     // Fungsi untuk memformat harga ke Rupiah
