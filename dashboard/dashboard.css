@@ -209,3 +209,27 @@ section {
     h2 { font-size: 2rem; }
     section { padding: 3rem 1rem; }
 }
+
+/* Tambahkan ini di dashboard.css */
+
+.profile-picture {
+    width: 150px;           /* Lebar gambar */
+    height: 150px;          /* Tinggi gambar */
+    border-radius: 50%;     /* Kunci untuk membuatnya bulat */
+    object-fit: cover;      /* Memastikan gambar mengisi lingkaran tanpa distorsi */
+    margin-bottom: 1.5rem;  /* Memberi jarak ke judul di bawahnya */
+    border: 4px solid #fff; /* Memberi bingkai putih yang elegan */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Memberi efek bayangan halus */
+}
+
+/* Tambahkan ini di akhir file dashboard.css */
+
+.contact-info a {
+    color: var(--text-color); /* Mengubah warna link menjadi warna teks utama (hitam di tema terang) */
+    text-decoration: none;    /* Menghilangkan garis bawah */
+    transition: color 0.3s;   /* Menambah efek transisi halus (opsional) */
+}
+
+.contact-info a:hover {
+    color: var(--primary-color); /* Mengubah warna saat kursor di atasnya (opsional, tapi disarankan) */
+}
