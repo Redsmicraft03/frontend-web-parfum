@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessageDiv = document.getElementById('error-message');
     
     // Sesuaikan URL ini dengan alamat backend Anda
-    const API_URL = 'http://127.0.0.1:3000/api/login';
+    const API_URL = 'https://backend-web-parfum.onrender.com/api/login';
 
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault(); // Mencegah form mengirim secara default
