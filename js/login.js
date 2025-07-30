@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('token', result.token);
                 alert('Login berhasil!');
                 // Arahkan ke halaman admin dashboard (ganti jika perlu)
-                window.location.href = '../admin/admin.html'; 
+                window.location.href = 'admin.html'; 
             }
         } catch (error) {
             // Tangani error jaringan (misal: server mati)
