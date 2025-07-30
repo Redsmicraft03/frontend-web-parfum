@@ -1,19 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const errorMessageDiv = document.getElementById('error-message');
-    
-    // Sesuaikan URL ini dengan alamat backend Anda
+    const submitButton = loginForm.querySelector('button[type="submit"]'); // Ambil tombol login
+
     const API_URL = 'https://backend-web-parfum.onrender.com/api/login';
 
-    loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Mencegah form mengirim secara default
+    // Fungsi bantuan untuk mengubah status tombol
+    const setButtonLoadingState = (isLoading) => {
+        if (isLoading) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sabar, lg proses...';
+        } else {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Login';
+        }
+    };
 
-        // Sembunyikan pesan error sebelumnya
+    loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
         errorMessageDiv.style.display = 'none';
         errorMessageDiv.textContent = '';
 
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
+
+        setButtonLoadingState(true); // Aktifkan status loading
 
         try {
             const response = await fetch(API_URL, {
@@ -27,21 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
 
             if (!response.ok) {
-                // Tampilkan pesan error dari backend
                 errorMessageDiv.textContent = result.message || 'Terjadi kesalahan.';
                 errorMessageDiv.style.display = 'block';
             } else {
-                // Simpan token ke localStorage
                 localStorage.setItem('token', result.token);
                 alert('Login berhasil!');
-                // Arahkan ke halaman admin dashboard (ganti jika perlu)
-                window.location.href = 'admin.html'; 
+                window.location.href = 'admin.html';
             }
         } catch (error) {
-            // Tangani error jaringan (misal: server mati)
             errorMessageDiv.textContent = 'Tidak bisa terhubung ke server.';
             errorMessageDiv.style.display = 'block';
+        } finally {
+            setButtonLoadingState(false); // Selalu kembalikan tombol ke keadaan semula
         }
     });
 });
-

@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     logoutBtn.addEventListener('click', () => {
         localStorage.removeItem('token');
-        window.location.href = '../login/login.html';
+        window.location.href = 'login.html';
     });
     
     // Logika Tema
